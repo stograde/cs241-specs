@@ -1,0 +1,12 @@
+---
+assignment: hw2
+
+compilers:
+  - &c 'gcc $@ -o $@.exec'
+
+files:
+  - [ hello.c, *c ]
+
+tests:
+  - [ hello.c, $@.exec ]
+  

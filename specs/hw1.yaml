@@ -1,0 +1,11 @@
+---
+assignment: hw1
+
+compilers:
+  - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'
+
+files:
+  - [ pthreads.c, *c-thread-math ]
+
+tests:
+  - [ pthreads.c, $@.exec ]

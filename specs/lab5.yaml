@@ -1,0 +1,17 @@
+---
+assignment: lab5
+
+compilers:
+  - &c-math 'gcc $@ -lm -o $@.exec'
+
+files:
+  - [ example.c, *c-math ]
+  - [ sqrt0.c, *c-math ]
+  - [ tests.c, *c-math ]
+  - [ tests2.c, *c-math ]
+
+tests:
+  - [ example.c, $@.exec ]
+  - [ sqrt0.c, $@.exec ]
+  - [ tests.c, $@.exec ]
+  - [ tests2.c, $@.exec ]

@@ -1,0 +1,13 @@
+---
+assignment: lab2
+
+compilers:
+  - &c 'gcc $@ -o $@.exec'
+
+files:
+  - [ hello.c, *c ]
+  - [ hello.E ]
+
+tests:
+  - [ hello.c, $@.exec ]
+  
