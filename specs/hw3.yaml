@@ -1,0 +1,17 @@
+---
+assignment: hw3
+
+compilers: &c-math 'gcc $@ -lm -o $@.exec'
+
+files:
+  - [ mean.c, *c-math ]
+  - [ factfunc.c, *c-math ]
+  - [ factfunc3.c, *c-math ]
+
+tests:
+  - - mean.c
+    - echo 10 \n 5 | $@.exec
+    - echo -5 \n -8 | $@.exec
+    - echo -15 \n 3 | $@.exec
+  - [ factfunc.c, echo 5 | $@.exec ]
+  - [ factfunc3.c, echo 5 | $@.exec ]

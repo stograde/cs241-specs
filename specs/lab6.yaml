@@ -9,9 +9,6 @@ files:
   - [ fact2.c, *c-math ]
   - [ fact3.c, *c-math ]
   - [ fact_for.c, *c-math ]
-  - [ mean.c, *c-math ]
-  - [ factfunc.c, *c-math ]
-  - [ factfunc3.c, *c-math ]
 
 tests:
   - [ sqrts.c, $@.exec ]
@@ -28,9 +25,3 @@ tests:
     - echo 5 | $@.exec
     - echo 0 | $@.exec
     - echo 10 | $@.exec
-  - - mean.c
-    - echo 10 \n 5 | $@.exec
-    - echo -5 \n -8 | $@.exec
-    - echo -15 \n 3 | $@.exec
-  - [ factfunc.c, echo 5 | $@.exec ]
-  - [ factfunc3.c, echo 5 | $@.exec ]
