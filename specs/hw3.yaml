@@ -1,14 +1,26 @@
 ---
 assignment: hw3
 
-compilers: &c-math 'gcc $@ -lm -o $@.exec'
+compilers: 
+  - &c 'gcc $@ -o $@.exec'
+  - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
+  - [ max.c, *c ]
+  - [ min.c, *c ]
   - [ mean.c, *c-math ]
   - [ factfunc.c, *c-math ]
   - [ factfunc3.c, *c-math ]
 
 tests:
+  - - max.c
+    - echo 10 \n 3 | $@.exec
+    - echo 50 \n 36 | $@.exec
+    - echo -5 \n 2 | $@.exec
+  - - min.c
+    - echo 10 \n 3 | $@.exec
+    - echo 50 \n 36 | $@.exec
+    - echo -5 \n 2 | $@.exec 
   - - mean.c
     - echo 10 \n 5 | $@.exec
     - echo -5 \n -8 | $@.exec
