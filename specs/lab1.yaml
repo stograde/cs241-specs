@@ -1,6 +1,5 @@
 ---
 assignment: lab1
-folder: lab0
 
 compilers:
   - &c 'gcc $@ -o $@.exec'
