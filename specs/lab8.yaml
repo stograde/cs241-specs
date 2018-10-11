@@ -1,0 +1,10 @@
+---
+assignment: lab8
+
+compilers: &c-thread-math 'gcc $@ -o $@.exec -lpthread -lm'
+
+files:
+  - [ pthreads.c, *c-thread-math ]
+
+tests:
+  - [ pthreads.c, $@.exec ]
