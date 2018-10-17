@@ -60,17 +60,23 @@ int main( int argc, char ** argv ) {
 		student[0] = '\0';
 	}
 
-	bool singleStudent = false;
+	bool specifiedStudents = false;
 
-	if (argc >= 3 && argv[2][0] == '-' && argv[2][1] == 's') {
-		for (int i = 0; i < students.size(); i++) {
-			string temp = students[i];
-			if (argv[3] == temp) {
-				singleStudent = true;
-				students.clear();
-				students.push_back( temp );
+	if (argc > 3 && argv[2][0] == '-' && argv[2][1] == 's') {
+		vector<string> tempVector;
+		for (int j = 3; j < argc; j++) {
+			for (int i = 0; i < students.size(); i++) {
+				string temp = students[i];
+				if (argv[j] == temp) {
+					specifiedStudents = true;
+
+					tempVector.push_back( temp );
+				}
 			}
 		}
+		students.clear();
+		students = tempVector;
+		sort( students.begin(), students.end() );
 	}
 
 	bool specOk = false;
