@@ -60,6 +60,19 @@ int main( int argc, char ** argv ) {
 		student[0] = '\0';
 	}
 
+	bool singleStudent = false;
+
+	if (argc >= 3 && argv[2][0] == '-' && argv[2][1] == 's') {
+		for (int i = 0; i < students.size(); i++) {
+			string temp = students[i];
+			if (argv[3] == temp) {
+				singleStudent = true;
+				students.clear();
+				students.push_back( temp );
+			}
+		}
+	}
+
 	bool specOk = false;
 
 	dt_utils::datetime submission;
