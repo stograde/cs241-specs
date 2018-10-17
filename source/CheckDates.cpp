@@ -22,33 +22,16 @@ int exist( const char * );
 
 int main( int argc, char ** argv ) {
 
-	string assignment = argv[1];
+	int aFlag = -1;
+	int sFlag = -1;
 
-	string assignmentID = assignment;
-
-	assignment.append( ".json" );
-	assignment.insert( 0, "./specs/_cache/" );
-
-	json specFile;
-
-	if (!exist( assignment.c_str() )) {
-	
-		cout << "Caching specs" << endl << endl;
-		cout << exec( "cd .. && cs251tk" );
-
-		cout << "\n\n\n\n" << endl;
+	for (int i = 0; i < argc; i++) {
+		if (argc > 3 && argv[i][0] == '-' && argv[i][1] == 'a') aFlag = i;
+		if (argc > 3 && argv[i][0] == '-' && argv[i][1] == 's') sFlag = i;
 	}
 
-	ifstream specIn = ifstream( assignment );
+	json assignments;
 
-	try {
-		specIn >> specFile;
-		cout << "Loaded spec file for " << assignmentID << endl;
-	} catch (nlohmann::detail::parse_error e) {
-		cout << "Invalid assignment id: " << assignmentID << endl;
-		return 0;
-	}
-	json files = specFile.at( "files" );
 	ifstream studentsIn = ifstream( "../students.txt" );
 	char * student = new char[9];
 	json students;
@@ -60,15 +43,17 @@ int main( int argc, char ** argv ) {
 		student[0] = '\0';
 	}
 
-	bool specifiedStudents = false;
+	if (sFlag != -1) {
+		json tempVector;
 
-	if (argc > 3 && argv[2][0] == '-' && argv[2][1] == 's') {
-		vector<string> tempVector;
-		for (int j = 3; j < argc; j++) {
+		int sFlagEnd;
+		if (sFlag > aFlag) sFlagEnd = argc;
+		else sFlagEnd = aFlag;
+
+		for (int j = sFlag + 1; j < sFlagEnd; j++) {
 			for (int i = 0; i < students.size(); i++) {
 				string temp = students[i];
 				if (argv[j] == temp) {
-					specifiedStudents = true;
 
 					tempVector.push_back( temp );
 				}
@@ -79,76 +64,117 @@ int main( int argc, char ** argv ) {
 		sort( students.begin(), students.end() );
 	}
 
-	bool specOk = false;
-
-	dt_utils::datetime submission;
-	dt_utils::datetime_format22 fmt( submission );
-
-	string startcmd = "git log --reverse ";
-	string endcmd = " 2> /dev/null | head -n 3 | tail -n 1";
-	for (int j = 0; j < students.size(); j++) {
-
-		cout << students[j] << '\t';
-
-		string student2 = students[j];
-
-		if (student2.size() < 6) cout << '\t';
-
-		vector <dt_utils::datetime> submissions;
-
-		for (int i = 0; i < files.size(); i++) {
-
-			string directorypath = "cd ../students/";
-			string studentName = students[j];
-			directorypath.append( studentName );
-
-			string filepath;
-			filepath.append( assignmentID );
-			filepath.append( "/" );
-
-			string fileName = files[i]["filename"];
-
-			filepath.append( fileName );
-
-			string cmd = directorypath + " && " + startcmd + filepath + endcmd;
-			string output = exec( cmd.c_str() );
-
-			if (output[0] == 'D') {
-				vector<string> dateVector = split( output, " " );
-
-				string date = dateVector[1] + ", " + reformatNum( dateVector[3] ) + " " + dateVector[2] + " " + dateVector[5] + " " + dateVector[4] + " -0500";
-
-				submission.clear();
-
-				if (!strtk::string_to_type_converter( date, fmt )) cout << "Error" << endl;
-
-				submissions.push_back( submission );
-			}
-
+	if (aFlag != -1) {
+		int aFlagEnd;
+		if (aFlag > sFlag) aFlagEnd = argc;
+		else aFlagEnd = sFlag;
+		
+		for (int j = aFlag + 1; j < aFlagEnd; j++) {
+				assignments.push_back(argv[j]);
 		}
-
-
-		if (submissions.size() != 0) {
-			dt_utils::datetime firstSubmission = submissions[0];
-
-			for (int i = 1; i < submissions.size(); i++) {
-				if (dt_utils::lessthan_datetime( submissions[i], firstSubmission )) {
-					firstSubmission = submissions[i];
-				}
-			}
-
-			cout << "First Submission for " << assignmentID << ": " << reformatNum( firstSubmission.month ) << "/" << reformatNum( firstSubmission.day ) << "/" << firstSubmission.year << " " << reformatNum( firstSubmission.hour ) << ":" << reformatNum( firstSubmission.minute ) << ":" << reformatNum( firstSubmission.second ) << endl;
-			specOk = true;
-		} else cout << "No submission" << endl;
-
-
-
-		submissions.erase( submissions.begin(), submissions.end() );
 
 	}
 
-	if (!specOk) cout << "=====spec may be wrong=====" << endl;
+	for (int i = 0; i < assignments.size(); i++) {
+		json specFile;
 
+		string assignment = assignments[i];
+
+		string assignmentID = assignment;
+
+		assignment.append( ".json" );
+		assignment.insert( 0, "./specs/_cache/" );
+
+		if (!exist( assignment.c_str() )) {
+
+			cout << "Caching specs" << endl << endl;
+			exec( "cd .. && cs251tk" );
+
+			cout << "\n\n\n\n" << endl;
+		}
+
+		ifstream specIn = ifstream( assignment );
+
+		try {
+			specIn >> specFile;
+			cout << "Loaded spec file for " << assignmentID << endl;
+		} catch (nlohmann::detail::parse_error e) {
+			cout << "Invalid assignment id: " << assignmentID << endl;
+			return 0;
+		}
+		json files = specFile.at( "files" );
+		
+
+		bool specOk = false;
+
+		dt_utils::datetime submission;
+		dt_utils::datetime_format22 fmt( submission );
+
+		string startcmd = "git log --reverse ";
+		string endcmd = " 2> /dev/null | head -n 3 | tail -n 1";
+		for (int j = 0; j < students.size(); j++) {
+
+			cout << students[j] << '\t';
+
+			string student2 = students[j];
+
+			if (student2.size() < 6) cout << '\t';
+
+			vector <dt_utils::datetime> submissions;
+
+			for (int i = 0; i < files.size(); i++) {
+
+				string directorypath = "cd ../students/";
+				string studentName = students[j];
+				directorypath.append( studentName );
+
+				string filepath;
+				filepath.append( assignmentID );
+				filepath.append( "/" );
+
+				string fileName = files[i]["filename"];
+
+				filepath.append( fileName );
+
+				string cmd = directorypath + " && " + startcmd + filepath + endcmd;
+				string output = exec( cmd.c_str() );
+
+				if (output[0] == 'D') {
+					vector<string> dateVector = split( output, " " );
+
+					string date = dateVector[1] + ", " + reformatNum( dateVector[3] ) + " " + dateVector[2] + " " + dateVector[5] + " " + dateVector[4] + " -0500";
+
+					submission.clear();
+
+					if (!strtk::string_to_type_converter( date, fmt )) cout << "Error" << endl;
+
+					submissions.push_back( submission );
+				}
+
+			}
+
+
+			if (submissions.size() != 0) {
+				dt_utils::datetime firstSubmission = submissions[0];
+
+				for (int i = 1; i < submissions.size(); i++) {
+					if (dt_utils::lessthan_datetime( submissions[i], firstSubmission )) {
+						firstSubmission = submissions[i];
+					}
+				}
+
+				cout << "First Submission for " << assignmentID << ": " << reformatNum( firstSubmission.month ) << "/" << reformatNum( firstSubmission.day ) << "/" << firstSubmission.year << " " << reformatNum( firstSubmission.hour ) << ":" << reformatNum( firstSubmission.minute ) << ":" << reformatNum( firstSubmission.second ) << endl;
+				specOk = true;
+			} else cout << "No submission" << endl;
+
+
+
+			submissions.erase( submissions.begin(), submissions.end() );
+
+		}
+
+		if (!specOk) cout << "=====spec may be wrong=====" << endl;
+	}
 }
 
 
