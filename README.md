@@ -13,4 +13,5 @@ The rm removes the cached .json files because they can get messed up when a new 
 
 
 **./CheckDates (hw# | lab#)**
+*To create CheckDates, run make from the source subdirectory.* 
 Finds the date of the first commit for each student for the specified assignment. These are printed out to the terminal. If specs are not cached, the program will automatically run cs251tk to cache them.
