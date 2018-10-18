@@ -19,6 +19,7 @@ string reformatNum( int );
 vector<string> split( const string&, const string& );
 string exec( const char* );
 int exist( const char * );
+bool sortBySize( string, string );
 
 int main( int argc, char ** argv ) {
 
@@ -82,12 +83,14 @@ int main( int argc, char ** argv ) {
 		vector<string> assignmentFiles;
 
 		if (!exist( "specs/_cache" )) exec( "cd .. && cs251tk 2> /dev/null" );
-		
+
 		assignmentFiles = split( exec( "ls specs/_cache" ), "\n" );
-		
+
 		for (int i = 0; i < assignmentFiles.size(); i++) {
 			assignmentFiles[i] = assignmentFiles[i].substr( 0, assignmentFiles[i].length() - 5 );
 		}
+
+		sort( assignmentFiles.begin(), assignmentFiles.end(), sortBySize );
 
 		assignments = assignmentFiles;
 		omitSpecLoadStatement = true;
@@ -201,11 +204,11 @@ int main( int argc, char ** argv ) {
 
 		}
 
-	
+
 		if (students.size() != 1) {
 			if (!specOk) cout << "\n\t=====Confirm accuracy of spec " << assignmentID << ".yaml=====\n" << endl;
 			cout << endl;
-		} else { if (!specOk) cout << string(5, '\t') << "=====Confirm accuracy of spec " << assignmentID << ".yaml=====" << endl; }
+		} else { if (!specOk) cout << string( 5, '\t' ) << "=====Confirm accuracy of spec " << assignmentID << ".yaml=====" << endl; }
 	}
 }
 
@@ -269,4 +272,16 @@ vector<string> split( const string& str, const string& delim ) {
 int exist( const char *name ) {
 	struct stat   buffer;
 	return (stat( name, &buffer ) == 0);
+}
+
+bool sortBySize( string s1, string s2 ) {
+	if (s1[0] == s2[0]) {
+		if (s1.size() == s2.size()) {
+			if (s1[s1.length() - 2] != s2[s2.length() - 2]) {
+				if (s1[s1.length() - 2] < 'a' && s2[s2.length() - 2] < 'a') {
+					return s1[s1.length() - 2] < s2[s2.length() - 2];
+				} else return s1[s1.length() - 2] > 'a';
+			} else return s1[s1.length() - 1] < s2[s2.length() - 1];
+		} else return s1.size() < s2.size();
+	} else return s1[0] < s2[0];
 }
