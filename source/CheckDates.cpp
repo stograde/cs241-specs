@@ -22,12 +22,14 @@ int exist( const char * );
 
 int main( int argc, char ** argv ) {
 
+	bool cachedSpecs = false;
+	bool omitSpecLoadStatement = false;
 	int aFlag = -1;
 	int sFlag = -1;
 
 	for (int i = 0; i < argc; i++) {
-		if (argc > 3 && argv[i][0] == '-' && argv[i][1] == 'a') aFlag = i;
-		if (argc > 3 && argv[i][0] == '-' && argv[i][1] == 's') sFlag = i;
+		if (argc > 2 && argv[i][0] == '-' && argv[i][1] == 'a') aFlag = i;
+		if (argc > 2 && argv[i][0] == '-' && argv[i][1] == 's') sFlag = i;
 	}
 
 	json assignments;
@@ -68,12 +70,44 @@ int main( int argc, char ** argv ) {
 		int aFlagEnd;
 		if (aFlag > sFlag) aFlagEnd = argc;
 		else aFlagEnd = sFlag;
-		
+
 		for (int j = aFlag + 1; j < aFlagEnd; j++) {
-				assignments.push_back(argv[j]);
+			assignments.push_back( argv[j] );
 		}
 
+	} else if (argc == 2 || (aFlag == -1 && sFlag == 2)) {
+		assignments.push_back( argv[1] );
+	} else {
+
+		vector<string> assignmentFiles;
+
+		if (!exist( "specs/_cache" )) exec( "cd .. && cs251tk 2> /dev/null" );
+		
+		assignmentFiles = split( exec( "ls specs/_cache" ), "\n" );
+		
+		for (int i = 0; i < assignmentFiles.size(); i++) {
+			assignmentFiles[i] = assignmentFiles[i].substr( 0, assignmentFiles[i].length() - 5 );
+		}
+
+		assignments = assignmentFiles;
+		omitSpecLoadStatement = true;
+
 	}
+
+	for (int i = 0; i < assignments.size(); i++) {
+		string assignment = assignments[i];
+		string assignmentID = assignment;
+		assignment.append( ".json" );
+		assignment.insert( 0, "./specs/_cache/" );
+		if (!exist( assignment.c_str() ) && !cachedSpecs) {
+
+			cout << "File " << assignmentID << ".json not found: Caching specs" << endl << endl;
+			exec( "cd .. && cs251tk 2> /dev/null" );
+
+			cout << "\n\n\n\n" << endl;
+		}
+	}
+
 
 	for (int i = 0; i < assignments.size(); i++) {
 		json specFile;
@@ -85,25 +119,17 @@ int main( int argc, char ** argv ) {
 		assignment.append( ".json" );
 		assignment.insert( 0, "./specs/_cache/" );
 
-		if (!exist( assignment.c_str() )) {
-
-			cout << "Caching specs" << endl << endl;
-			exec( "cd .. && cs251tk" );
-
-			cout << "\n\n\n\n" << endl;
-		}
-
 		ifstream specIn = ifstream( assignment );
 
 		try {
 			specIn >> specFile;
-			cout << "Loaded spec file for " << assignmentID << endl;
+			if (!omitSpecLoadStatement) cout << "Loaded spec file for " << assignmentID << endl;
 		} catch (nlohmann::detail::parse_error e) {
-			cout << "Invalid assignment id: " << assignmentID << endl;
+			cout << "\n\n\t===Invalid assignment id: " << assignmentID << "===\n" << endl;
 			return 0;
 		}
 		json files = specFile.at( "files" );
-		
+
 
 		bool specOk = false;
 
@@ -165,15 +191,21 @@ int main( int argc, char ** argv ) {
 
 				cout << "First Submission for " << assignmentID << ": " << reformatNum( firstSubmission.month ) << "/" << reformatNum( firstSubmission.day ) << "/" << firstSubmission.year << " " << reformatNum( firstSubmission.hour ) << ":" << reformatNum( firstSubmission.minute ) << ":" << reformatNum( firstSubmission.second ) << endl;
 				specOk = true;
-			} else cout << "No submission" << endl;
-
+			} else {
+				cout << "No submission";
+				if (students.size() != 1) cout << endl;
+			}
 
 
 			submissions.erase( submissions.begin(), submissions.end() );
 
 		}
 
-		if (!specOk) cout << "=====spec may be wrong=====" << endl;
+	
+		if (students.size() != 1) {
+			if (!specOk) cout << "\n\t=====Confirm accuracy of spec " << assignmentID << ".yaml=====\n" << endl;
+			cout << endl;
+		} else { if (!specOk) cout << string(5, '\t') << "=====Confirm accuracy of spec " << assignmentID << ".yaml=====" << endl; }
 	}
 }
 
