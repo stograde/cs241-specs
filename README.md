@@ -1,10 +1,10 @@
 # Specs and Tools for the Hardware Design course
 
-## updateSpecs
+## update_specs.sh
 Updates your specs to the latest version in the repository.
 
 ```
-./updateSpecs
+./update_specs.sh
 ```
 
 Internally, this uses:
