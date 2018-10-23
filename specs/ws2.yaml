@@ -9,3 +9,4 @@ files:
 
 tests:
   - [ 2column.c, $@.exec ]
+  

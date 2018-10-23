@@ -27,11 +27,14 @@ int main( int argc, char ** argv ) {
 	bool omitSpecLoadStatement = false;
 	int aFlag = -1;
 	int sFlag = -1;
+	int tFlag = -1;
+	bool toolkit = false;
 
 	for (int i = 0; i < argc; i++) {
 		if (argc > 2 && argv[i][0] == '-' && argv[i][1] == 'a') aFlag = i;
 		if (argc > 2 && argv[i][0] == '-' && argv[i][1] == 's') sFlag = i;
 	}
+	if (argc > 1 && argv[1][0] == '-' && argv[1][1] == 't') toolkit = true;
 
 	json assignments;
 
@@ -126,7 +129,7 @@ int main( int argc, char ** argv ) {
 
 		try {
 			specIn >> specFile;
-			if (!omitSpecLoadStatement) cout << "Loaded spec file for " << assignmentID << endl;
+			if (!omitSpecLoadStatement && !toolkit) cout << "Loaded spec file for " << assignmentID << endl;
 		} catch (nlohmann::detail::parse_error e) {
 			cout << "\n\n\t===Invalid assignment id: " << assignmentID << "===\n" << endl;
 			return 0;
@@ -143,11 +146,11 @@ int main( int argc, char ** argv ) {
 		string endcmd = " 2> /dev/null | head -n 3 | tail -n 1";
 		for (int j = 0; j < students.size(); j++) {
 
-			cout << students[j] << '\t';
+			if (!toolkit) cout << students[j] << '\t';
 
 			string student2 = students[j];
 
-			if (student2.size() < 6) cout << '\t';
+			if (student2.size() < 6 && !toolkit) cout << '\t';
 
 			vector <dt_utils::datetime> submissions;
 
@@ -195,8 +198,10 @@ int main( int argc, char ** argv ) {
 				cout << "First Submission for " << assignmentID << ": " << reformatNum( firstSubmission.month ) << "/" << reformatNum( firstSubmission.day ) << "/" << firstSubmission.year << " " << reformatNum( firstSubmission.hour ) << ":" << reformatNum( firstSubmission.minute ) << ":" << reformatNum( firstSubmission.second ) << endl;
 				specOk = true;
 			} else {
-				cout << "No submission";
-				if (students.size() != 1) cout << endl;
+				if (!toolkit) {
+					cout << "No submission";
+					if (students.size() != 1) cout << endl;
+				}
 			}
 
 

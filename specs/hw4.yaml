@@ -1,0 +1,28 @@
+---
+assignment: hw4
+
+compilers:
+  - &c-math 'gcc $@ -o $@.exec -lm'
+
+# These files will need to be changed for next year. Current assignment does not specify file names.
+files:
+  - [ mean.c, *c-math ]
+  - [ problems.c, *c-math ]
+  - [ functions.c, *c-math ]
+  - [ areaCircle.c, *c-math ]
+  - [ mean_input.c, *c-math ]
+  - [ moInterest.c, *c-math ]
+  - [ area.c, *c-math ]
+  - [ interest.c, *c-math ]
+  - [ areaFunc.c, *c-math ]
+
+tests:
+  - [ mean.c, $@.exec ]
+  - [ problems.c, $@.exec ]
+  - [ functions.c, $@.exec ]
+  - [ areaCircle.c, $@.exec ]
+  - [ mean_input.c, $@.exec ]
+  - [ moInterest.c, $@.exec ]
+  - [ area.c, $@.exec ]
+  - [ interest.c, $@.exec ]
+  - [ areaFunc.c, $@.exec ]
