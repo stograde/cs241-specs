@@ -1,0 +1,6 @@
+---
+assignment: lab13
+
+files:
+  - [ sum2.c ]
+  - [ sumsqs.c ]

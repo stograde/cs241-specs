@@ -1,0 +1,15 @@
+---
+assignment: lab12
+
+files:
+  - [ sum2.c ]
+  - [ sum2.s ]
+  - [ sum2x.c ]
+  - [ sum2x_ans.s ]
+  - [ sum2a.s ]
+  - [ sum2b.s ]
+  - [ sum2c.s ]
+  - [ sum2d.s ]
+  - [ sum2e.s ]
+  - [ sum2f.s ]
+  - [ sum2g.s ]

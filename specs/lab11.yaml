@@ -1,9 +1,6 @@
 ---
 assignment: lab11
 
-compilers:
-  - &c-s 'gcc -c -S $@ -lpthread -lm'
-
 files:
-  - [ sumsqs.c, *c-s ]
+  - [ sumsqs.c ]
   - [ sumsqs.s ]
