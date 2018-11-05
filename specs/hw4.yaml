@@ -15,6 +15,7 @@ files:
   - [ area.c, *c-math ]
   - [ interest.c, *c-math ]
   - [ areaFunc.c, *c-math ]
+  - [ specs.c, *c-math, optional: true ]
 
 tests:
   - [ mean.c, $@.exec ]
@@ -26,3 +27,4 @@ tests:
   - [ area.c, $@.exec ]
   - [ interest.c, $@.exec ]
   - [ areaFunc.c, $@.exec ]
+  - [ specs.c, $@.exec ]

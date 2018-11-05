@@ -3,4 +3,6 @@ assignment: lab13
 
 files:
   - [ sum2.c ]
+  - [ sum2_intel.c ]
   - [ sumsqs.c ]
+  - [ sumsqs.s ]

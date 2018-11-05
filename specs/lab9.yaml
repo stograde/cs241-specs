@@ -2,12 +2,11 @@
 assignment: lab9
 
 compilers: 
-  - &c-s 'gcc -c -S $@ -lpthread -lm'
   - &c-thread-math 'gcc $@ -o $@.exec -lpthread -lm'
 
 files:
   - [ trap-omp.c, *c-thread-math ]
-  - [ sum2.c, *c-s ]
+  - [ sum2.c ]
   - [ sum2.s ]
 
 tests:
