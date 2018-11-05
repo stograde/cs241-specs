@@ -1,0 +1,14 @@
+---
+assignment: lab14
+
+
+
+files:
+  - [ rfact.c ]
+  - [ rfact.s ]
+  - [ sumsqs.c ]
+  - [ sumsqs.s ]
+  - [ sumsqs_mod.s ]
+  - [ sqtable.c ]
+  - [ sqtable.s ]
+  - [ sqtable_mod.s ]
