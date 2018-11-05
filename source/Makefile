@@ -1,4 +1,4 @@
-CheckDates:	
+../CheckDates:	
 	$(MAKE) CheckDates17 || $(MAKE) CheckDates14 || $(MAKE) CheckDates11
 
 CheckDates17:	CheckDates.cpp datetime_utils.hpp json.hpp strtk.hpp
