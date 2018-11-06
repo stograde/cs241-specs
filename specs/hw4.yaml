@@ -15,7 +15,7 @@ files:
   - [ area.c, *c-math ]
   - [ interest.c, *c-math ]
   - [ areaFunc.c, *c-math ]
-  - [ specs.c, *c-math, optional: true ]
+  - [ specs.c, *c-math, optional: true ]  # From assignment
 
 tests:
   - [ mean.c, $@.exec ]
