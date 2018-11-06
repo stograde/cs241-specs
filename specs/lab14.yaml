@@ -9,6 +9,7 @@ files:
   - [ sumsqs.c ]
   - [ sumsqs.s ]
   - [ sumsqs_mod.s ]
+  - [ sumsqs.s_intel ]
   - [ sqtable.c ]
   - [ sqtable.s ]
   - [ sqtable_mod.s ]
