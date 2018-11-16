@@ -1,0 +1,11 @@
+---
+assignment: lab15
+
+compilers:
+  - &aexec 'gcc $@ -o $@.exec'
+
+files: 
+  - [ sumabs2_mod.s, *aexec ]
+
+tests:
+  - [ sumabs2_mod.s, echo "-3 7" | $@.exec]

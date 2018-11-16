@@ -1,8 +1,6 @@
 ---
 assignment: lab14
 
-
-
 files:
   - [ rfact.c ]
   - [ rfact.s ]
