@@ -1,0 +1,17 @@
+---
+assignment: lab16
+
+compilers:
+  - &gcc 'gcc $@ -o $@.exec'
+
+files:
+  - [ sumsqs2s.s, *gcc ]
+  - [ sumsqs2pc.s, *gcc ]
+  - [ myhello2.s, *gcc ]
+  - [ mycube.s, *gcc ]
+
+tests:
+  - [ sumsqs2s.s, echo "5" | $@.exec ]
+  - [ sumsqs2pc.s, $@.exec ]
+  - [ myhello2.s, $@.exec ]
+  - [ mycube.s, echo "5" | $@.exec ]
