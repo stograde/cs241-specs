@@ -1,0 +1,27 @@
+---
+assignment: lab18
+
+architecture: arm
+
+compilers:
+  - &gcc 'gcc $@ -o $@.exec'
+  - &gcc-hdlib 'gcc hdlib.o $@ -o $@.exec'
+
+files:
+  - [ scanf2.s, *gcc ]
+  - [ scanf3.s, *gcc ]
+  - - find.s
+    - gcc -c hdlib.s
+    - *gcc-hdlib
+  - - count.s
+    - gcc -c hdlib.s
+    - *gcc-hdlib
+
+tests:
+  - [ scanf2.s, echo "5\n-5\nff\nfs sf" | $@.exec ]
+  - [ scanf3.s, echo "5\n-5\nff\nfs sf" | $@.exec ]
+  - [ find.s, echo "f\nsspinfroincifisdf" | $@.exec ]
+  - [ count.s, echo "f\nsspinfroincifisdf" | $@.exec ]
+
+inputs:
+  - hdlib.s
