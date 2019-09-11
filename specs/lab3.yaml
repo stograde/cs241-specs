@@ -1,0 +1,21 @@
+---
+assignment: lab3
+
+compilers:
+  - &c 'gcc $@ -o $@.exec'
+  - &c-math 'gcc $@ -lm -o $@.exec'
+
+files:
+  - [ example.c, *c-math ]
+  - [ example1.c, *c-math ]
+  - [ sqrt0.c, *c-math ]
+  - [ tests.c, *c ]
+  - [ tests2.c, *c ]
+  - [ id_rsa.pub ]
+
+tests:
+  - [ example.c, $@.exec ]
+  - [ example1.c, $@.exec ]
+  - [ sqrt0.c, $@.exec ]
+  - [ tests.c, $@.exec ]
+  - [ tests2.c, $@.exec ]

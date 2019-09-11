@@ -5,7 +5,7 @@ compilers:
   - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'
 
 files:
-  - [ pthreads.c, *c-thread-math ]
+  - [ pthreads.c, *c-thread-math, optional_compile: true ]
 
 tests:
   - [ pthreads.c, $@.exec ]
