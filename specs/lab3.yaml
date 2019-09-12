@@ -2,15 +2,14 @@
 assignment: lab3
 
 compilers:
-  - &c 'gcc $@ -o $@.exec'
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
   - [ example.c, *c-math ]
   - [ example1.c, *c-math ]
   - [ sqrt0.c, *c-math ]
-  - [ tests.c, *c ]
-  - [ tests2.c, *c ]
+  - [ tests.c, *c-math ]
+  - [ tests2.c, *c-math ]
   - [ id_rsa.pub ]
 
 tests:

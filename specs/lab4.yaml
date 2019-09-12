@@ -2,11 +2,11 @@
 assignment: lab4
 
 compilers:
-  - &c 'gcc $@ -o $@.exec'
+  - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
-  - [ hello.c, *c ]
-  - [ hello2.c, *c ]
+  - [ sqrts.c, *c-math ]
+  - [ fact.c, *c-math ]
 
 tests:
   - [ hello.c, $@.exec ]
