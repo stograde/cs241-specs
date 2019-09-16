@@ -1,27 +1,16 @@
 ---
 assignment: lab6
 
-compilers: &c-math 'gcc $@ -lm -o $@.exec'
+compilers: 
+  - &c 'gcc $@ -o $@.exec'
+  - &c-pthread 'gcc $@ -lm -lpthread -o $@.exec'
 
 files:
-  - [ sqrts.c, *c-math ]
-  - [ fact.c, *c-math ]
-  - [ fact2.c, *c-math ]
-  - [ fact3.c, *c-math ]
-  - [ fact_for.c, *c-math ]
+  - [ hello.c, *c ]
+  - [ hello2.c, *c ]
+  - [ pthreads1.c, *c-pthread ]
 
 tests:
-  - [ sqrts.c, $@.exec ]
-  - [ fact.c, $@.exec ]
-  - - fact2.c
-    - echo 5 | $@.exec
-    - echo 0 | $@.exec
-    - echo 10 | $@.exec
-  - - fact3.c
-    - echo 5 | $@.exec
-    - echo 0 | $@.exec
-    - echo 10 | $@.exec
-  - - fact_for.c
-    - echo 5 | $@.exec
-    - echo 0 | $@.exec
-    - echo 10 | $@.exec
+  - [ hello.c, $@.exec ]
+  - [ hello2.c, $@.exec ]
+  - [ pthreads1.c, $@.exec ]

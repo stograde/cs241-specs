@@ -3,10 +3,13 @@ assignment: hw2
 
 compilers:
   - &c 'gcc $@ -o $@.exec'
+  - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
   - [ hello.c, *c ]
+  - [ sqrt1.c, *c-math ]
 
 tests:
   - [ hello.c, $@.exec ]
+  - [ sqrt1.c, $@.exec ]
   
