@@ -5,10 +5,12 @@ compilers:
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
+  - [ example2.c, *c-math ]
   - [ sqrts.c, *c-math ]
   - [ fact.c, *c-math ]
 
 tests:
+  - [ example2.c, $@.exec ]
   - [ sqrts.c, $@.exec ]
   - [ fact.c, $@.exec ]
   
