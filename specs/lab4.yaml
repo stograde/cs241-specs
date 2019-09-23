@@ -9,6 +9,6 @@ files:
   - [ fact.c, *c-math ]
 
 tests:
-  - [ hello.c, $@.exec ]
-  - [ hello2.c, $@.exec ]
+  - [ sqrts.c, $@.exec ]
+  - [ fact.c, $@.exec ]
   
