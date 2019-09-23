@@ -5,8 +5,6 @@ compilers: &c 'gcc $@ -o $@.exec'
 
 files:
   - [ tryhex.c, *c ]
-  - [ trybin.c, *c ]
 
 tests:
   - [ tryhex.c, $@.exec ]
-  - [ trybin.c, $@.exec ]

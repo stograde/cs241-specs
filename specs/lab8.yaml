@@ -1,10 +1,23 @@
 ---
 assignment: lab8
 
-compilers: &c-thread-math 'gcc $@ -o $@.exec -lpthread -lm'
+compilers: 
+  - &c-thread-math 'gcc $@ -o $@.exec -lpthread -lm'
+  - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
-  - [ pthreads1.c, *c-thread-math ]
+  - [ testinterest.c, *c-math ]
+  - [ prod_array.c, *c-math ]
+  - [ sum_input.c, *c-math ]
+  - [ sum_array.c, *c-math ]
+  - [ mean_array.c, *c-math ]
 
 tests:
-  - [ pthreads1.c, $@.exec ]
+  - [ testinterest.c, $@.exec ]
+  - [ prod_array.c, $@.exec ]
+  - [ sum_input.c, $@.exec < input.txt ]
+  - [ sum_array.c, $@.exec ]
+  - [ mean_array.c, $@.exec ]
+
+inputs:
+  - input.txt

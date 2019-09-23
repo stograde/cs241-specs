@@ -2,17 +2,26 @@
 assignment: hw3
 
 compilers: 
-  - &c 'gcc $@ -o $@.exec'
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
-  - [ max.c, *c ]
-  - [ min.c, *c ]
+  - [ fact.c, *c-math ]
+  - [ fact2.c, *c-math ]
+  - [ fact3.c, *c-math ]
+  - [ fact3b.c, *c-math, optional: true ]
+  - [ max.c, *c-math ]
+  - [ min.c, *c-math ]
   - [ mean.c, *c-math ]
   - [ factfunc.c, *c-math ]
   - [ factfunc3.c, *c-math ]
+  - [ specs.c, *c-math ]
+  - [ mean_input.c, *c-math ]
 
 tests:
+  - [ fact.c, $@.exec ]
+  - [ fact2.c, echo 5 | $@.exec ]
+  - [ fact3.c, echo 5 | $@.exec ]
+  - [ fact3b.c, echo 5 | $@.exec ]
   - - max.c
     - echo 10 \n 3 | $@.exec
     - echo 50 \n 36 | $@.exec
@@ -27,3 +36,8 @@ tests:
     - echo -15 \n 3 | $@.exec
   - [ factfunc.c, echo 5 | $@.exec ]
   - [ factfunc3.c, echo 5 | $@.exec ]
+  - [ specs.c, $@.exec < input.txt ]
+  - [ mean_input.c, $@.exec < input.txt ]
+
+inputs:
+  - input.txt
