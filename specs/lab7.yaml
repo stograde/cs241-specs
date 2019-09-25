@@ -4,7 +4,11 @@ assignment: lab7
 compilers: &c 'gcc $@ -o $@.exec'
 
 files:
-  - [ tryhex.c, *c ]
+  - [ tryhex1.c, *c ]
+  - [ tryhex2.c, *c ]
+  - [ tryhex3.c, *c ]
 
 tests:
-  - [ tryhex.c, $@.exec ]
+  - [ tryhex1.c, $@.exec ]
+  - [ tryhex2.c, $@.exec ]
+  - [ tryhex3.c, $@.exec ]

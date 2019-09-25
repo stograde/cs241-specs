@@ -10,6 +10,6 @@ files:
   - [ factF.c, *c-math ]
 
 tests:
-  - [ power.c, $@.exec ]
+  - [ power.c, echo 2 \n 5 | $@.exec ]
   - [ sqrtsF.c, $@.exec ]
   - [ factF.c, $@.exec ]

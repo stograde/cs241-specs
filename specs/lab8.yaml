@@ -2,7 +2,6 @@
 assignment: lab8
 
 compilers: 
-  - &c-thread-math 'gcc $@ -o $@.exec -lpthread -lm'
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
