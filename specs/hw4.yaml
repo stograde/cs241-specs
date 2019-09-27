@@ -4,7 +4,6 @@ assignment: hw4
 compilers:
   - &c-math 'gcc $@ -o $@.exec -lm'
 
-# These files will need to be changed for next year. Current assignment does not specify file names.
 files:
   - [ testinterest.c, *c-math ]
   - [ read_array.c, *c-math ]
