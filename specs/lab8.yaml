@@ -5,14 +5,12 @@ compilers:
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
-  - [ testinterest.c, *c-math ]
   - [ prod_array.c, *c-math ]
   - [ sum_input.c, *c-math ]
   - [ sum_array.c, *c-math ]
   - [ mean_array.c, *c-math ]
 
 tests:
-  - [ testinterest.c, $@.exec ]
   - [ prod_array.c, $@.exec ]
   - [ sum_input.c, $@.exec < input.txt ]
   - [ sum_array.c, $@.exec ]

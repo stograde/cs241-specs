@@ -6,25 +6,11 @@ compilers:
 
 # These files will need to be changed for next year. Current assignment does not specify file names.
 files:
-  - [ mean.c, *c-math ]
-  - [ problems.c, *c-math ]
-  - [ functions.c, *c-math ]
-  - [ areaCircle.c, *c-math ]
-  - [ mean_input.c, *c-math ]
-  - [ moInterest.c, *c-math ]
-  - [ area.c, *c-math ]
-  - [ interest.c, *c-math ]
-  - [ areaFunc.c, *c-math ]
-  - [ specs.c, *c-math, optional: true ]  # From assignment
+  - [ testinterest.c, *c-math ]
+  - [ read_array.c, *c-math ]
+  - [ read_array2.c, *c-math ]
 
 tests:
-  - [ mean.c, $@.exec ]
-  - [ problems.c, $@.exec ]
-  - [ functions.c, $@.exec ]
-  - [ areaCircle.c, $@.exec ]
-  - [ mean_input.c, $@.exec ]
-  - [ moInterest.c, $@.exec ]
-  - [ area.c, $@.exec ]
-  - [ interest.c, $@.exec ]
-  - [ areaFunc.c, $@.exec ]
-  - [ specs.c, $@.exec ]
+  - [ testinterest.c, $@.exec ]
+  - [ read_array.c, $@.exec ]
+  - [ read_array2.c, $@.exec ]
