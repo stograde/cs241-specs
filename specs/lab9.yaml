@@ -2,13 +2,12 @@
 assignment: lab9
 
 compilers: 
-  - &c-thread-math 'gcc $@ -o $@.exec -lpthread -lm'
+  - &c-math 'gcc $@ -o $@.exec -lm'
 
 files:
-  - [ trap-omp.c, *c-thread-math ]
-  - [ sum2.c ]
-  - [ sum2.s ]
+  - [ trybin.c, *c-math ]
+  - [ getbit.c, *c-math ]
 
 tests:
-  - [ trap-omp.c, $@.exec ]
-  
+  - [ trybin.c, $@.exec ]
+  - [ getbit.c, $@.exec < 37, $@.exec < F3 ]
