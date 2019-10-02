@@ -2,16 +2,12 @@
 assignment: lab10
 
 compilers: 
-  - &c-s 'gcc -c -S $@ -lpthread -lm'
-  - &c-thread-math 'gcc $@ -o $@.exec -lpthread -lm'
-  - &c-math 'gcc $@ -o $@.exec -lm'
+  - &c 'gcc $@ -o $@.exec'
 
 files:
-  - [ sqrts2.c, *c-s ]
-  - [ sqrts2.s ]
-  - [ prod_array.c, *c-math ]
-  - [ mean_array.c, *c-math ]
+  - [ strncopy.c, *c ]
+  - [ strlen.c, *c ]
 
 tests:
-  - [ prod_array.c, $@.exec ]
-  - [ mean_array.c, $@.exec ]
+  - [ strncopy.c, $@.exec ]
+  - [ strlen.c, $@.exec ]
