@@ -1,12 +1,2 @@
 ---
 assignment: ws2
-
-compilers:
-  - &c-math 'gcc $@ -o $@.exec -lm'
-
-files:
-  - [ 2column.c, *c-math ]
-
-tests:
-  - [ 2column.c, $@.exec ]
-  

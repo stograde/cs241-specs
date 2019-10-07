@@ -1,6 +1,14 @@
 ---
 assignment: lab11
 
+compilers:
+  - &c 'gcc $@ -o $@.exec'
+
 files:
-  - [ sumsqs.c ]
-  - [ sumsqs.s ]
+  - [ strlenp.c, *c ]
+  - [ sum2.c ]
+  - [ sum2.s ]
+
+tests:
+  - [ strlenp.c, $@.exec ]
+  
