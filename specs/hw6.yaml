@@ -1,0 +1,8 @@
+---
+assignment: hw6
+
+files:
+ - [ print_bits.c ]
+ - [ strncopyp.c ]
+ - [ strindexp.c ]
+ - [ strappendp.c ]
