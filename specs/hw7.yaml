@@ -2,10 +2,10 @@
 assignment: hw7
 
 compilers:
- - &c-math-thread 'gcc $@ -o $@.exec -lm -fopenmp'
+ - &c-math-omp 'gcc $@ -o $@.exec -lm -fopenmp'
 
 files:
- - [ trap-omp.c ]
+ - [ trap-omp.c, *c-math-omp ]
 
 tests:
  - - trap-omp.c
