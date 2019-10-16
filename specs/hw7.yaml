@@ -1,0 +1,14 @@
+---
+assignment: hw7
+
+compilers:
+ - &c-math-thread 'gcc $@ -o $@.exec -lm -fopenmp'
+
+files:
+ - [ trap-omp.c ]
+
+tests:
+ - - trap-omp.c
+   - $@.exec 1
+   - $@.exec 4
+   - $@.exec 32
