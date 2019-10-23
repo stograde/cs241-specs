@@ -5,13 +5,14 @@ architecture: armv7l
 
 compilers:
   - &s 'gcc -c -S $@ -o $@-gcc.s'
+  - &s-exec 'gcc $@ -o $@.exec'
 
 files: 
   - [ sum2.c ]
   - [ sum2.s ]
   - [ sum2-15a.c, *s ]
-  - [ sum2-15a.s ]
+  - [ sum2-15a.s, *s-exec ]
   - [ sum2-15b.c, *s ]
-  - [ sum2-15b.s ]
+  - [ sum2-15b.s, *s-exec ]
   - [ sum2-15c.c, *s ]
-  - [ sum2-15c.s ]
+  - [ sum2-15c.s, *s-exec ]
