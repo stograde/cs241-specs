@@ -16,3 +16,6 @@ files:
   - [ sum2-15b.s, *s-exec ]
   - [ sum2-15c.c, *s ]
   - [ sum2-15c.s, *s-exec ]
+
+tests:
+  - [ sum2-15b.s, $@.exec ]
