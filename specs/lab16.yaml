@@ -2,8 +2,6 @@
 assignment: lab16
 
 files:
-  - [ sum2.c ]
-  - [ sum2.s ]
   - [ sumsqs.c ]
   - [ sumsqs.s ]
   - [ sumsqs2.c ]
