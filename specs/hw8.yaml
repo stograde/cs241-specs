@@ -1,0 +1,12 @@
+---
+assignment: hw8
+
+files:
+  - [ sum2.c ]
+  - [ sum2.s ]
+  - [ sum2-8a.c ]
+  - [ sum2-8a.s ]
+  - [ sum2-8b.c ]
+  - [ sum2-8b.s ]
+  - [ sum2-8c.c ]
+  - [ sum2-8c.s ]
