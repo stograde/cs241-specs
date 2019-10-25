@@ -1,8 +1,6 @@
 ---
 assignment: lab15
 
-architecture: armv7l
-
 compilers:
   - &s 'gcc -c -S $@ -o $@-gcc.s'
   - &s-exec 'gcc $@ -o $@.exec'
