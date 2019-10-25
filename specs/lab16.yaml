@@ -1,9 +1,6 @@
 ---
 assignment: lab16
 
-compilers:
-  - &gcc 'gcc $@ -o $@.exec'
-
 files:
   - [ sum2.c ]
   - [ sum2.s ]
