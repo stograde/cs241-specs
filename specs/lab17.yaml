@@ -1,33 +1,5 @@
 ---
 assignment: lab17
 
-compilers:
-  - &gcc 'gcc $@ -o $@.exec'
-
 files:
-  - [ guard2.s, *gcc ]
-  - [ guard3.s, *gcc ]
-  - [ guard4.s, *gcc ]
-  - [ isneg.s, *gcc ]
-  - [ isdigit.s, *gcc ]
-
-tests:
-  - - guard2.s
-    - echo "7 0" | $@.exec
-    - echo "2 1" | $@.exec
-  - - guard3.s
-    - echo "3 5" | $@.exec
-    - echo "3 3" | $@.exec
-    - echo "5 3" | $@.exec
-    - echo "-100 2" | $@.exec
-  - - guard4.s
-    - echo "45 4" | $@.exec
-    - echo "50 4" | $@.exec
-    - echo "60 4" | $@.exec
-  - - isneg.s
-    - echo "5" | $@.exec
-    - echo "-5" | $@.exec
-  - - isdigit.s
-    - echo "45" | $@.exec
-    - echo "50" | $@.exec
-    - echo "60" | $@.exec
+  - [ scanf-s.s ]
