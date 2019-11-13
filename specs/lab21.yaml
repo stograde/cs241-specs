@@ -1,0 +1,7 @@
+---
+assignment: lab21
+
+files:
+  - [ myhello.s ]
+  - [ myhello2.s ]
+  

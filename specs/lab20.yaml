@@ -1,0 +1,7 @@
+---
+assignment: lab20
+
+files:
+  - [ sumabs2.c ]
+  - [ sumabs2.s ]
+  - [ sumabs2_mod.s ]
