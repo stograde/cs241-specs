@@ -1,0 +1,17 @@
+---
+assignment: hw9
+
+architecture: armv7l
+
+compilers:
+  - &s 'gcc $@ -o $@.exec'
+
+files:
+  - [ testdouble.s, *s ]
+  - [ testprodplus.s, *s ]
+  - [ testreport.s, *s ]
+
+tests:
+  - [ testdouble.s, echo 4 | $@.exec ]
+  - [ testprodplus.s, echo 4 5 6 | $@.exec ]
+  - [ testreport.s, echo 4 5 6 | $@.exec ]

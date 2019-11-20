@@ -1,0 +1,17 @@
+---
+assignment: lab22
+
+architecture: armv7l
+
+compilers:
+  - &s 'gcc $@ -o $@.exec'
+
+files:
+  - [ addtwo.s ]
+  - [ add10.s, *s ]
+  - [ add1.s ]
+  - [ mysquare.s, *s ]
+
+tests:
+  - [ add10.s, echo 5 | $@.exec ]
+  - [ mysquare.s, echo 5 | $@.exec ]
