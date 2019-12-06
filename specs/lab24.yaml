@@ -1,0 +1,14 @@
+---
+assignment: lab24
+
+architecture: armv7l
+
+compilers:
+  - &s 'gcc $@ -o $@.exec'
+
+files:
+  - [ mysqsum.s, *s ]
+  - [ testpow.s ]
+  - [ guard.s ]
+  - [ guard2.s, *s ]
+  - [ testfact.s, *s ]

@@ -1,0 +1,16 @@
+---
+assignment: lab23
+
+architecture: armv7l
+
+compilers:
+  - &o 'gcc -c $@'
+  - &s 'gcc $@ -o $@.exec'
+  - &hd-lib 'gcc $@ hdlib.o -o $@.exec'
+
+files:
+  - [ hdlib.s, *o ]
+  - [ testhdlib.s ]
+  - [ myecho.s, *hd-lib ]
+  - [ myecho2.s, *hd-lib ]
+  - [ myecho3.s, *hd-lib ]
