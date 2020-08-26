@@ -5,7 +5,10 @@ compilers:
   - &c 'gcc $@ -o $@.exec'
 
 files:
-  - [ hello.c, *c ]
-
-tests:
-  - [ hello.c, $@.exec ]
+  - file: hello.c
+    commands: *c
+    tests: $@.exec
+  - file: hello.E
+  - file: hello.o
+    options:
+      hide_contents: true
