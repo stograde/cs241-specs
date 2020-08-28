@@ -5,12 +5,16 @@ compilers:
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
-  - [ example2.c, *c-math ]
-  - [ sqrts.c, *c-math ]
-  - [ fact.c, *c-math ]
-
-tests:
-  - [ example2.c, $@.exec ]
-  - [ sqrts.c, $@.exec ]
-  - [ fact.c, $@.exec ]
+  - file: power.c
+    commands: *c-math
+    tests: $@.exec
+  - file: sqrtsF.c
+    commands: *c-math
+    tests: $@.exec
+  - file: factF.c
+    commands: *c-math
+    tests: $@.exec
+  - file: specs.c
+    commands: *c-math
+    tests: $@.exec 
   
