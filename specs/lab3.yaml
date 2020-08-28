@@ -5,16 +5,12 @@ compilers:
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
-  - [ example.c, *c-math ]
-  - [ example1.c, *c-math ]
-  - [ sqrt0.c, *c-math ]
-  - [ tests.c, *c-math ]
-  - [ tests2.c, *c-math ]
-  - [ id_rsa.pub ]
-
-tests:
-  - [ example.c, $@.exec ]
-  - [ example1.c, $@.exec ]
-  - [ sqrt0.c, $@.exec ]
-  - [ tests.c, $@.exec ]
-  - [ tests2.c, $@.exec ]
+  - file: example2.c
+    commands: *c-math
+    tests: $@.exec
+  - file: sqrts.c
+    commands: *c-math
+    tests: $@.exec
+  - file: fact.c
+    commands: *c-math
+    tests: $@.exec
