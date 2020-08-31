@@ -16,5 +16,7 @@ files:
     tests: $@.exec
   - file: specs.c
     commands: *c-math
-    tests: $@.exec 
-  
+    tests: $@.exec < specs.in
+
+inputs:
+  - file: specs.in
