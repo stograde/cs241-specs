@@ -2,14 +2,15 @@
 assignment: lab5
 
 compilers:
-  - &c-math 'gcc $@ -lm -o $@.exec'
+  - &c 'gcc $@ -o $@.exec'
 
 files:
-  - [ power.c, *c-math ]
-  - [ sqrtsF.c, *c-math ]
-  - [ factF.c, *c-math ]
-
-tests:
-  - [ power.c, echo 2 \n 5 | $@.exec ]
-  - [ sqrtsF.c, $@.exec ]
-  - [ factF.c, $@.exec ]
+  - file: tryhex1.c
+    commands: *c
+    tests: $@.exec
+  - file: tryhex2.c
+    commands: *c
+    tests: $@.exec
+  - file: tryhex3.c
+    commands: *c
+    tests: $@.exec
