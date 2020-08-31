@@ -6,10 +6,19 @@ compilers:
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
-  - [ hello.c, *c ]
-  - [ sqrt1.c, *c-math ]
-
-tests:
-  - [ hello.c, $@.exec ]
-  - [ sqrt1.c, $@.exec ]
+  - file: hello.c
+    commands: *c
+    tests: $@.exec
+  - file: sqrt1.c
+    commands: *c-math
+    tests: $@.exec
+  - file: sqrt2.c
+    commands: *c-math
+    tests: $@.exec
+  - file: prod_input.c
+    commands: *c
+    tests: $@.exec
+  - file: mean_input.c
+    commands: *c
+    tests: $@.exec
   
