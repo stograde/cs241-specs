@@ -14,3 +14,12 @@ files:
   - file: tryhex3.c
     commands: *c
     tests: $@.exec
+  - file: prod_array.c
+    commands: *c
+    tests: $@.exec
+  - file: prod_array2.c
+    commands: *c
+    tests: $@.exec
+  - file: sum_array.c
+    commands: *c
+    tests: $@.exec
