@@ -6,11 +6,15 @@ compilers:
   - &c-pthread 'gcc $@ -lm -lpthread -o $@.exec'
 
 files:
-  - [ hello.c, *c ]
-  - [ hello2.c, *c ]
-  - [ pthreads1.c, *c-pthread ]
-
-tests:
-  - [ hello.c, $@.exec ]
-  - [ hello2.c, $@.exec ]
-  - [ pthreads1.c, $@.exec ]
+  - file: max.c
+    commands: *c
+    tests:
+      - echo 10 \n 3 | $@.exec
+      - echo 50 \n 36 | $@.exec
+      - echo -5 \n 2 | $@.exec
+  - file: min.c
+    commands: *c
+    tests:
+      - echo 10 \n 3 | $@.exec
+      - echo 50 \n 36 | $@.exec
+      - echo -5 \n 2 | $@.exec

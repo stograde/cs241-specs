@@ -5,39 +5,18 @@ compilers:
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
-  - [ fact.c, *c-math ]
-  - [ fact2.c, *c-math ]
-  - [ fact3.c, *c-math ]
-  - [ fact3b.c, *c-math, optional: true ]
-  - [ max.c, *c-math ]
-  - [ min.c, *c-math ]
-  - [ mean.c, *c-math ]
-  - [ factfunc.c, *c-math ]
-  - [ factfunc3.c, *c-math ]
-  - [ specs.c, *c-math ]
-  - [ mean_input.c, *c-math ]
-
-tests:
-  - [ fact.c, $@.exec ]
-  - [ fact2.c, echo 5 | $@.exec ]
-  - [ fact3.c, echo 5 | $@.exec ]
-  - [ fact3b.c, echo 5 | $@.exec ]
-  - - max.c
-    - echo 10 \n 3 | $@.exec
-    - echo 50 \n 36 | $@.exec
-    - echo -5 \n 2 | $@.exec
-  - - min.c
-    - echo 10 \n 3 | $@.exec
-    - echo 50 \n 36 | $@.exec
-    - echo -5 \n 2 | $@.exec 
-  - - mean.c
-    - echo 10 \n 5 | $@.exec
-    - echo -5 \n -8 | $@.exec
-    - echo -15 \n 3 | $@.exec
-  - [ factfunc.c, echo 5 | $@.exec ]
-  - [ factfunc3.c, echo 5 | $@.exec ]
-  - [ specs.c, $@.exec < input.txt ]
-  - [ mean_input.c, $@.exec < input.txt ]
-
-inputs:
-  - input.txt
+  - file: fact.c
+    commands: *c-math
+    tests: $@.exec
+  - file: fact2.c
+    commands: *c-math
+    tests: echo 5 | $@.exec
+  - file: fact3.c
+    commands: *c-math
+    tests: echo 5 | $@.exec
+  - file: factfunc.c
+    commands: *c-math
+    tests: echo 5 | $@.exec
+  - file: factfunc3.c
+    commands: *c-math
+    tests: echo 5 | $@.exec
