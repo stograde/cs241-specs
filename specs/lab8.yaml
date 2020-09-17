@@ -1,20 +1,5 @@
 ---
 assignment: lab8
 
-compilers: 
-  - &c-math 'gcc $@ -lm -o $@.exec'
-
 files:
-  - [ prod_array.c, *c-math ]
-  - [ sum_input.c, *c-math ]
-  - [ sum_array.c, *c-math ]
-  - [ mean_array.c, *c-math ]
-
-tests:
-  - [ prod_array.c, $@.exec ]
-  - [ sum_input.c, $@.exec < input.txt ]
-  - [ sum_array.c, $@.exec ]
-  - [ mean_array.c, $@.exec ]
-
-inputs:
-  - input.txt
+  - file: hello.c

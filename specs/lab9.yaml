@@ -5,9 +5,6 @@ compilers:
   - &c-math 'gcc $@ -o $@.exec -lm'
 
 files:
-  - [ trybin.c, *c-math ]
-  - [ getbit.c, *c-math ]
-
-tests:
-  - [ trybin.c, $@.exec ]
-  - [ getbit.c, $@.exec < 37, $@.exec < F3 ]
+  - file: hello.c
+  - file: hello2.c
+  - file: pthreads1.c
