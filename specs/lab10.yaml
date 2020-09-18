@@ -5,9 +5,5 @@ compilers:
   - &c 'gcc $@ -o $@.exec'
 
 files:
-  - [ strncopy.c, *c ]
-  - [ strlen.c, *c ]
-
-tests:
-  - [ strncopy.c, $@.exec ]
-  - [ strlen.c, $@.exec ]
+  - file: trap-omp.c
+  - file: trap-omp2.c
