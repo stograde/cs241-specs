@@ -5,10 +5,7 @@ compilers:
   - &c 'gcc $@ -o $@.exec'
 
 files:
-  - [ strlenp.c, *c ]
-  - [ sum2.c ]
-  - [ sum2.s ]
-
-tests:
-  - [ strlenp.c, $@.exec ]
+  - file: strncopy.c
+  - file: strlen.c
+  - file: strncopy2.c
   
