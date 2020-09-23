@@ -2,4 +2,6 @@
 assignment: lab12
 
 files:
-  - [ trap-omp.c ]
+  - file: strlenp.c
+  - file: sum2.c
+  - file: sum2.s
