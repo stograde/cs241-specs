@@ -2,5 +2,7 @@
 assignment: lab13
 
 files:
-  - [ sqrts2.c ]
-  - [ sqrts2.s ]
+  - file: sum2.c
+  - file: sum2.s
+  - file: sqrts2.c
+  - file: sqrts2.s
