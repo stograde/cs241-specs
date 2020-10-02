@@ -2,5 +2,5 @@
 assignment: lab14
 
 files:
-  - [ sumsqs.c ]
-  - [ sumsqs.s ]
+  - file: sumsqs.c
+  - file: sumsqs.s
