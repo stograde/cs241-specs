@@ -1,5 +1,11 @@
 ---
 assignment: lab17
 
+compilers:
+  - &s-diff 'diff $@ $@_link'
+
 files:
-  - [ scanf-s.s ]
+  - file: scanf-s.c
+  - file: scanf-s.s_link
+  - file: scanf-s.s
+    tests: *s-diff

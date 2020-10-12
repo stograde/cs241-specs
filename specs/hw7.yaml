@@ -2,13 +2,25 @@
 assignment: hw7
 
 compilers:
- - &c-math-omp 'gcc $@ -o $@.exec -lm -fopenmp'
+  - &s 'gcc -c -S $@ -o $@-gcc.s'
+  - &s-diff 'diff $@ $@-gcc.s'
 
 files:
- - [ trap-omp.c, *c-math-omp ]
-
-tests:
- - - trap-omp.c
-   - $@.exec 1
-   - $@.exec 4
-   - $@.exec 32
+  - file: sum2.c
+  - file: sum2.s
+  - file: sum2-7a.c
+    commands: *s
+  - file: sum2-7a.s
+    tests: *s-diff
+  - file: sum2-7b.c
+    commands: *s
+  - file: sum2-7b.s
+    tests: *s-diff
+  - file: sum2-7c.c
+    commands: *s
+  - file: sum2-7c.s
+    tests: *s-diff
+  - file: sum2-7d.c
+    commands: *s
+  - file: sum2-7d.s
+    tests: *s-diff
