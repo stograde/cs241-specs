@@ -1,7 +1,18 @@
 ---
 assignment: lab20
 
+architecture: armv7l
+
+compilers:
+  - &s 'gcc $@ -o $@.exec'
+
 files:
-  - [ sumabs2.c ]
-  - [ sumabs2.s ]
-  - [ sumabs2_mod.s ]
+  - file: myhello.s
+    commands: *s
+    tests: $@.exec
+  - file: myhello2.s
+    commands: *s
+    tests: $@.exec
+  - file: myhello3.s
+    commands: *s
+    tests: $@.exec
