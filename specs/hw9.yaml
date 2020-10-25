@@ -7,11 +7,10 @@ compilers:
   - &s 'gcc $@ -o $@.exec'
 
 files:
-  - [ testdouble.s, *s ]
-  - [ testprodplus.s, *s ]
-  - [ testreport.s, *s ]
+  - file: testdouble.s
+    commands: *s
+    tests: echo 4 | $@.exec
+  - file: testprodplus.s
+    commands: *s
+    tests: echo 4 5 6 | $@.exec
 
-tests:
-  - [ testdouble.s, echo 4 | $@.exec ]
-  - [ testprodplus.s, echo 4 5 6 | $@.exec ]
-  - [ testreport.s, echo 4 5 6 | $@.exec ]
