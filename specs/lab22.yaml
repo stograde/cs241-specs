@@ -4,14 +4,30 @@ assignment: lab22
 architecture: armv7l
 
 compilers:
+  - &o 'gcc -c $@'
   - &s 'gcc $@ -o $@.exec'
+  - &hd-lib 'gcc $@ hdlib.o -o $@.exec'
 
 files:
-  - [ addtwo.s ]
-  - [ add10.s, *s ]
-  - [ add1.s ]
-  - [ mysquare.s, *s ]
-
-tests:
-  - [ add10.s, echo 5 | $@.exec ]
-  - [ mysquare.s, echo 5 | $@.exec ]
+  - file: mysqsum.s
+    commands: *s
+    tests:
+      - echo 5 | $@.exec
+      - echo 20 | $@.exec
+      - echo -2 | $@.exec
+  - file: testpow.s
+    commands: *s
+    tests:
+      - echo 5 2 | $@.exec
+      - echo 2 3 | $@.exec
+      - echo 5 1 | $@.exec
+      - echo -2 3 | $@.exec
+  - file: hdlib.s
+    commands: *o
+  - file: testhdlib.s
+  - file: myecho.s
+    commands: *hd-lib
+  - file: myecho2.s
+    commands: *hd-lib
+  - file: myecho3.s
+    commands: *hd-lib
