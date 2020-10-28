@@ -12,3 +12,12 @@ files:
   - [ guard.s ]
   - [ guard2.s, *s ]
   - [ testfact.s, *s ]
+
+  # - file: isneg.s
+  #   commands: *s
+  #   tests:
+  #     - echo 5 | $@.exec
+  #     - echo -5 | $@.exec
+  #     - echo -1 | $@.exec
+  #     - echo 0 | $@.exec
+  #     - echo 1 | $@.exec

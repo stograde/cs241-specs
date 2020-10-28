@@ -4,13 +4,34 @@ assignment: lab23
 architecture: armv7l
 
 compilers:
-  - &o 'gcc -c $@'
   - &s 'gcc $@ -o $@.exec'
   - &hd-lib 'gcc $@ hdlib.o -o $@.exec'
 
 files:
-  - [ hdlib.s, *o ]
-  - [ testhdlib.s ]
-  - [ myecho.s, *hd-lib ]
-  - [ myecho2.s, *hd-lib ]
-  - [ myecho3.s, *hd-lib ]
+  - file: guard.s
+  - file: guard2.s
+    commands: *s
+    tests:
+      - echo 7 2 | $@.exec
+      - echo 2 1 | $@.exec
+  - file: guard3.s
+    commands: *s
+    tests:
+      - echo 3 5 | $@.exec
+      - echo 3 3 | $@.exec
+      - echo 5 3 | $@.exec
+      - echo -100 2 | $@.exec
+  - file: testfact.s
+    commands: *s
+    tests:
+      - echo 4 | $@.exec
+      - echo 2 | $@.exec
+      - echo 5 | $@.exec
+  - file: find.s
+    commands: *hd-lib
+    tests:
+      - echo e \n testing | $@.exec
+      - echo a \n a long line of a after a after a | $@.exec
+
+supporting:
+  - hdlib.o
