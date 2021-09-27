@@ -3,6 +3,7 @@ assignment: lab6
 
 compilers: 
   - &c 'gcc $@ -o $@.exec'
+  - &c-math 'gcc $@ -o $@.exec -lm'
 
 files:
   - file: trybin.c
