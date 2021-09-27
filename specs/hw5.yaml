@@ -5,15 +5,3 @@ compilers:
   - &c 'gcc $@ -o $@.exec'
 
 files:
-  - file: strindex.c
-    commands: *c
-    tests: $@.exec
-  - file: strappend.c
-    commands: *c
-    tests: $@.exec
-  - file: strncopyp.c
-    commands: *c
-    tests: $@.exec
-  - file: strindexp.c
-    commands: *c
-    tests: $@.exec

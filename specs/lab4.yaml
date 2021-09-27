@@ -2,21 +2,37 @@
 assignment: lab4
 
 compilers:
+  - &c 'gcc $@ -o $@.exec'
   - &c-math 'gcc $@ -lm -o $@.exec'
 
 files:
   - file: power.c
     commands: *c-math
     tests: $@.exec
-  - file: sqrtsF.c
-    commands: *c-math
-    tests: $@.exec
-  - file: factF.c
-    commands: *c-math
-    tests: $@.exec
   - file: specs.c
     commands: *c-math
     tests: $@.exec < specs.in
+  - file: max.c
+    commands: *c
+    tests:
+      - echo 10 \n 3 | $@.exec
+      - echo 50 \n 36 | $@.exec
+      - echo -5 \n 2 | $@.exec
+  - file: min.c
+    commands: *c
+    tests:
+      - echo 10 \n 3 | $@.exec
+      - echo 50 \n 36 | $@.exec
+      - echo -5 \n 2 | $@.exec
+  - file: read_string.c
+    commands: *c
+    tests: $@.exec
+  - file: strncopy.c
+    commands: *c
+    tests: $@.exec
+  - file: strlen.c
+    commands: *c
+    tests: $@.exec
 
 inputs:
   - file: specs.in

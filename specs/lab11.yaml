@@ -5,7 +5,4 @@ compilers:
   - &c 'gcc $@ -o $@.exec'
 
 files:
-  - file: strncopy.c
-  - file: strlen.c
-  - file: strncopy2.c
   

@@ -1,12 +1,23 @@
 ---
 assignment: lab7
 
-compilers: &c 'gcc $@ -o $@.exec'
+compilers: 
+  - &c 'gcc $@ -o $@.exec'
+  - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'
 
 files:
-  - file: trybin.c
+  - file: hello.c
     commands: *c
     tests: $@.exec
-  - file: getbit.c
+  - file: hello2.c
+    commands: *c
+    tests: $@.exec
+  - file: pthreads1.c
+    commands: *c-thread-math
+    tests: $@.exec
+  - file: strindex.c
+    commands: *c
+    tests: $@.exec
+  - file: strappend.c
     commands: *c
     tests: $@.exec

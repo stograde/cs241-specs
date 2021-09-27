@@ -2,11 +2,17 @@
 assignment: hw1
 
 compilers:
-  - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'
+  - &c 'gcc $@ -o $@.exec'
+  - &c-math 'gcc $@ -o $@.exec -lm'
 
 files:
-  - file: pthreads.c
-    commands: *c-thread-math
+  - file: id_rsa.pub
+  - file: copy_array.c
+    commands: *c
     tests: $@.exec
-    options:
-      optional_compile: true
+  - file: strncopy2.c
+    commands: *c
+    tests: $@.exec
+  - file:  testinterest.c
+    commands:  *c-math
+    tests: $@.exec

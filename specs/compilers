@@ -1,0 +1,3 @@
+  - &c 'gcc $@ -o $@.exec'
+  - &c-math 'gcc $@ -o $@.exec -lm'
+  - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'

@@ -20,5 +20,3 @@ files:
   - file: tests2.c
     commands: *c-math
     tests: $@.exec
-  - file: id_rsa.pub
-  

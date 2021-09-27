@@ -2,8 +2,5 @@
 assignment: hw4
 
 compilers:
-  - &c-math 'gcc $@ -o $@.exec -lm'
 
 files:
-  - file: copy_array.c
-  - file: read_string.c

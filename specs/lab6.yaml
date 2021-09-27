@@ -3,18 +3,20 @@ assignment: lab6
 
 compilers: 
   - &c 'gcc $@ -o $@.exec'
-  - &c-pthread 'gcc $@ -lm -lpthread -o $@.exec'
 
 files:
-  - file: max.c
+  - file: trybin.c
     commands: *c
-    tests:
-      - echo 10 \n 3 | $@.exec
-      - echo 50 \n 36 | $@.exec
-      - echo -5 \n 2 | $@.exec
-  - file: min.c
+    tests: $@.exec
+  - file: getbit.c
     commands: *c
-    tests:
-      - echo 10 \n 3 | $@.exec
-      - echo 50 \n 36 | $@.exec
-      - echo -5 \n 2 | $@.exec
+    tests: $@.exec
+  - file: strncopyp.c
+    commands: *c
+    tests: $@.exec
+  - file: strindexp.c
+    commands: *c
+    tests: $@.exec
+  - file: fact3.c
+    commands: *c-math
+    tests: echo 5 | $@.exec

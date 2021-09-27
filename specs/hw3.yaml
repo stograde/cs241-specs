@@ -8,12 +8,6 @@ files:
   - file: fact.c
     commands: *c-math
     tests: $@.exec
-  - file: fact2.c
-    commands: *c-math
-    tests: echo 5 | $@.exec
-  - file: fact3.c
-    commands: *c-math
-    tests: echo 5 | $@.exec
   - file: factfunc.c
     commands: *c-math
     tests: echo 5 | $@.exec
