@@ -1,6 +1,0 @@
----
-assignment: lab12
-
-files:
-  - file: sum2.c
-  - file: sum2.s

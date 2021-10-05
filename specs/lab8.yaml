@@ -1,5 +1,6 @@
+# F21
 ---
-assignment: lab10
+assignment: lab8
 
 compilers: 
   - &c 'gcc $@ -o $@.exec'
