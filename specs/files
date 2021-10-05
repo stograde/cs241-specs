@@ -1,0 +1,18 @@
+# examples of files elements - F21
+files:
+  - file: hello.c
+    commands: *c
+    tests: $@.exec
+  - file: max.c
+    commands: *c
+    tests:
+      - echo 10 \n 3 | $@.exec
+      - echo 50 \n 36 | $@.exec
+      - echo -5 \n 2 | $@.exec
+  - file: specs.c
+    commands: *c-math
+    tests: $@.exec < specs.in
+
+
+inputs:
+  - file: specs.in
