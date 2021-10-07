@@ -1,0 +1,9 @@
+# F21
+---
+assignment: lab11
+
+compilers: 
+
+files:
+  - file: sumsqs.c
+  - file: sumsqs.s

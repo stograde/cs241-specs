@@ -1,6 +1,0 @@
----
-assignment: lab14
-
-files:
-  - file: sumsqs.c
-  - file: sumsqs.s

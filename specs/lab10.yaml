@@ -1,0 +1,11 @@
+# F21
+---
+assignment: lab10
+
+compilers: 
+
+files:
+  - file: sum2.c
+  - file: sum2.s
+  - file: sqrts2.c
+  - file: sqrts2.s
