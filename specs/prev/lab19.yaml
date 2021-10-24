@@ -1,6 +1,0 @@
----
-assignment: lab19
-
-files:
-  - file: rfact.c
-  - file: rfact.s

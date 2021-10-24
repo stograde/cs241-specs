@@ -1,0 +1,11 @@
+# F21
+---
+assignment: lab15
+
+compilers: 
+
+files:
+  - file: sumabs2.c
+  - file: sumabs2.s
+  - file: rfact.c
+  - file: rfact.s

@@ -1,0 +1,16 @@
+# F21
+---
+assignment: lab14
+
+compilers: 
+  - &s-diff 'diff $@ $@_link'
+
+files:
+  - file: scanf-i.c
+  - file: scanf-i.s_link
+  - file: scanf-i.s
+    tests: *s-diff
+  - file: scanf-s.c
+  - file: scanf-s.s_link
+  - file: scanf-s.s
+    tests: *s-diff

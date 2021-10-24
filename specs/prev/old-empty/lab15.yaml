@@ -1,0 +1,8 @@
+---
+assignment: lab15
+
+compilers:
+  - &s 'gcc -c -S $@ -o $@-gcc.s'
+  - &s-diff 'diff $@ $@-gcc.s'
+
+files: 

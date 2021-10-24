@@ -1,7 +1,0 @@
----
-assignment: lab18
-
-files:
-  - file: sumabs2.c
-  - file: sumabs2.s
-

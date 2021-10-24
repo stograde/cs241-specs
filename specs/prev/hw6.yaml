@@ -2,6 +2,4 @@
 assignment: hw6
 
 files:
-  - file: addints.c
-  - file: addints.s
   - file: trap-omp2.c

@@ -5,16 +5,4 @@ compilers:
   - &s-diff 'diff $@ $@_link'
 
 files:
-  - file: addints.c
-  - file: addints.s_link
-  - file: addints.s
-    tests: *s-diff
-  - file: sumsqs.c
-  - file: sumsqs.s_link
-  - file: sumsqs.s
-    tests: *s-diff
-  - file: sumsqs2.c
-  - file: sumsqs2.s_link
-  - file: sumsqs2.s
-    tests: *s-diff
 
