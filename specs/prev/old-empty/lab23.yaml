@@ -1,0 +1,10 @@
+---
+assignment: lab23
+
+architecture: armv7l
+
+compilers:
+  - &s 'gcc $@ -o $@.exec'
+  - &hd-lib 'gcc $@ hdlib.o -o $@.exec'
+
+files:

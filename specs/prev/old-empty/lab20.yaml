@@ -1,0 +1,8 @@
+---
+assignment: lab20
+
+architecture: armv7l
+
+compilers:
+
+files:

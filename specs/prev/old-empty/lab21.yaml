@@ -1,0 +1,10 @@
+---
+assignment: lab21
+
+architecture: armv7l
+
+compilers:
+  - &s 'gcc $@ -o $@.exec'
+
+files:
+  

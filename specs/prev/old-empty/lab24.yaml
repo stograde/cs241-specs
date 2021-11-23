@@ -1,0 +1,9 @@
+---
+assignment: lab24
+
+architecture: armv7l
+
+compilers:
+  - &s 'gcc $@ -o $@.exec'
+
+files:
