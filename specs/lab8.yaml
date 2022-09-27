@@ -1,6 +1,6 @@
-# F21
+# F22
 ---
-assignment: lab9
+assignment: lab8
 
 compilers:
   - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'

@@ -1,6 +1,6 @@
-# F21
+# F22
 ---
-assignment: lab13
+assignment: lab12
 
 compilers: 
   - &s 'gcc -c -S $@ -o $@-gcc.s'
