@@ -25,13 +25,13 @@ files:
       - echo 10 \n 3 | $@.exec
       - echo 50 \n 36 | $@.exec
       - echo -5 \n 2 | $@.exec
-  - file: read_string.c
+  - file: trybin.c
     commands: *c
     tests: $@.exec
-  - file: strncopy.c
+  - file: getbit.c
     commands: *c
     tests: $@.exec
-  - file: strlen.c
+  - file: strncopy2.c
     commands: *c
     tests: $@.exec
 

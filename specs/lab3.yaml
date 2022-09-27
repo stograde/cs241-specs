@@ -8,29 +8,6 @@ compilers:
   - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'
 
 files:
-  - file: pthreads.c
-    commands: *c-thread-math
-    tests: $@.exec
-    options:
-      optional_compile: true
-  - file: example2.c
-    commands: *c-math
-    tests: $@.exec
-  - file: sqrts.c
-    commands: *c-math
-    tests: $@.exec
-  - file: fact.c
-    commands: *c-math
-    tests: $@.exec
-  - file: sqrtsF.c
-    commands: *c-math
-    tests: $@.exec
-  - file: factF.c
-    commands: *c-math
-    tests: $@.exec
-  - file: fact2.c
-    commands: *c-math
-    tests: echo 5 | $@.exec
   - file: sqrtsF.c
     commands: *c-math
     tests: $@.exec
@@ -44,6 +21,15 @@ files:
     commands: *c
     tests: $@.exec
   - file: sum_array.c
+    commands: *c
+    tests: $@.exec
+  - file: read_string.c
+    commands: *c
+    tests: $@.exec
+  - file: strncopy.c
+    commands: *c
+    tests: $@.exec
+  - file: strlen.c
     commands: *c
     tests: $@.exec
 

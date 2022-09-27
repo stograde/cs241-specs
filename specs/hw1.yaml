@@ -8,10 +8,12 @@ compilers:
 
 files:
   - file: id_rsa.pub
-  - file: copy_array.c
-    commands: *c
+  - file: pthreads.c
+    commands: *c-thread-math
     tests: $@.exec
-  - file: strncopy2.c
+    options:
+      optional_compile: true
+  - file: copy_array.c
     commands: *c
     tests: $@.exec
   - file:  testinterest.c

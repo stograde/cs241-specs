@@ -6,18 +6,15 @@ compilers:
   - &c-math 'gcc $@ -o $@.exec -lm'
 
 files:
-  - file: example.c
+  - file: example2.c
     commands: *c-math
     tests: $@.exec
-  - file: example1.c
+  - file: sqrts.c
     commands: *c-math
     tests: $@.exec
-  - file: sqrt0.c
+  - file: fact.c
     commands: *c-math
     tests: $@.exec
-  - file: tests.c
+  - file: fact2.c
     commands: *c-math
-    tests: $@.exec
-  - file: tests2.c
-    commands: *c-math
-    tests: $@.exec
+    tests: echo 5 | $@.exec

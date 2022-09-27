@@ -6,5 +6,3 @@ compilers:
   - &c 'gcc $@ -o $@.exec'
 
 files:
-  - file: trap-omp.c
-  - file: trap-omp2.c

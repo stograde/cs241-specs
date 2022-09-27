@@ -4,8 +4,24 @@ assignment: lab1
 
 compilers:
   - &c 'gcc $@ -o $@.exec'
+  - &c-math 'gcc $@ -o $@.exec -lm'
 
 files:
   - file: hello.c
     commands: *c
+    tests: $@.exec
+  - file: example.c
+    commands: *c-math
+    tests: $@.exec
+  - file: example1.c
+    commands: *c-math
+    tests: $@.exec
+  - file: sqrt0.c
+    commands: *c-math
+    tests: $@.exec
+  - file: tests.c
+    commands: *c-math
+    tests: $@.exec
+  - file: tests2.c
+    commands: *c-math
     tests: $@.exec

@@ -4,21 +4,11 @@ assignment: lab7
 
 compilers: 
   - &c 'gcc $@ -o $@.exec'
-  - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'
+  - &c-math 'gcc $@ -o $@.exec -lm'
 
 files:
-  - file: hello.c
-    commands: *c
-    tests: $@.exec
-  - file: hello2.c
-    commands: *c
-    tests: $@.exec
-  - file: pthreads1.c
-    commands: *c-thread-math
-    tests: $@.exec
-  - file: strindex.c
-    commands: *c
-    tests: $@.exec
-  - file: strappend.c
-    commands: *c
-    tests: $@.exec
+  - file: trap-omp.c
+  - file: trap-omp2.c
+  - file: fact3.c
+    commands: *c-math
+    tests: echo 5 | $@.exec
