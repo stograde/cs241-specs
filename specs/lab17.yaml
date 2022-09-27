@@ -1,19 +1,34 @@
 # F21
 ---
-assignment: lab17
+assignment: lab18
 
 architecture: armv7l
 
 compilers:
+  - &o 'gcc -c $@'
   - &s 'gcc $@ -o $@.exec'
+  - &hd-lib 'gcc $@ hdlib.o -o $@.exec'
 
 files:
-  - file: myhello1.s
-  - file: addtwo.s
-  - file: add10.s
+  - file: mysqsum.s
     commands: *s
-    tests: $@.exec
-  - file: add1.s
-  - file: mysquare.s
+    tests:
+      - echo 5 | $@.exec
+      - echo 20 | $@.exec
+      - echo -2 | $@.exec
+  - file: testpow.s
     commands: *s
-    tests: $@.exec
+    tests:
+      - echo 5 2 | $@.exec
+      - echo 2 3 | $@.exec
+      - echo 5 1 | $@.exec
+      - echo -2 3 | $@.exec
+  - file: hdlib.s
+    commands: *o
+  - file: testhdlib.s
+  - file: myecho.s
+    commands: *hd-lib
+  - file: myecho2.s
+    commands: *hd-lib
+  - file: myecho3.s
+    commands: *hd-lib

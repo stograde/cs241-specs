@@ -1,38 +1,40 @@
 # F21
 ---
-assignment: lab19
+assignment: lab20
 
 architecture: armv7l
 
 compilers:
   - &s 'gcc $@ -o $@.exec'
-  - &hd-lib 'gcc $@ hdlib.o -o $@.exec'
 
 files:
-  - file: guard.s
-  - file: guard2.s
+  - file: isneg.s
     commands: *s
     tests:
-      - echo 7 2 | $@.exec
-      - echo 2 1 | $@.exec
-  - file: guard3.s
-    commands: *s
-    tests:
-      - echo 3 5 | $@.exec
-      - echo 3 3 | $@.exec
-      - echo 5 3 | $@.exec
-      - echo -100 2 | $@.exec
-  - file: testfact.s
-    commands: *s
-    tests:
-      - echo 4 | $@.exec
-      - echo 2 | $@.exec
+      - echo 51 | $@.exec
       - echo 5 | $@.exec
-  - file: find.s
-    commands: *hd-lib
+      - echo -5 | $@.exec
+      - echo -1 | $@.exec
+      - echo 0 | $@.exec
+      - echo 1 | $@.exec
+  - file: isblank.s
+    commands: *s
+  - file: guard.s
+  - file: guard4.s
+    commands: *s
     tests:
-      - echo e \n testing | $@.exec
-      - echo a \n a long line of a after a after a | $@.exec
-
-supporting:
-  - hdlib.o
+      - echo 1 8 | $@.exec
+      - echo 2 8 | $@.exec
+      - echo 1 7 | $@.exec
+      - echo 3 5 | $@.exec
+  - file: guard5.s
+    commands: *s
+    tests:
+      - echo 45 4 | $@.exec
+      - echo 50 4 | $@.exec
+      - echo 60 4 | $@.exec
+  - file: isdigit.s
+    commands: *s
+    tests:
+      - echo 3 | $@.exec
+      - echo e | $@.exec

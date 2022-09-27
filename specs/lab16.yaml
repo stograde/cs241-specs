@@ -1,19 +1,19 @@
 # F21
 ---
-assignment: lab16
+assignment: lab17
 
 architecture: armv7l
 
-compilers: 
+compilers:
   - &s 'gcc $@ -o $@.exec'
 
 files:
-  - file: myhello.s
+  - file: myhello1.s
+  - file: addtwo.s
+  - file: add10.s
     commands: *s
     tests: $@.exec
-  - file: myhello2.s
-    commands: *s
-    tests: $@.exec
-  - file: myhello3.s
+  - file: add1.s
+  - file: mysquare.s
     commands: *s
     tests: $@.exec

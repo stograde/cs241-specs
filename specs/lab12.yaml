@@ -1,30 +1,32 @@
 # F21
 ---
-assignment: lab12
+assignment: lab13
 
 compilers: 
   - &s 'gcc -c -S $@ -o $@-gcc.s'
-  - &s-diff 'diff $@ $@-gcc.s'
+  - &s-diff 'diff $@ $@_link'
 
 files:
+  - file: addints.c
+  - file: addints.s_link
+  - file: addints.s
+    tests: *s-diff
+  - file: sumsqs.c
+  - file: sumsqs.s_link
+  - file: sumsqs.s
+    tests: *s-diff
+  - file: sumsqs2.c
+  - file: sumsqs2.s_link
+  - file: sumsqs2.s
+    tests: *s-diff
   - file: sum3.c
   - file: sum3.s
   - file: sum3.s_n
-  - file: sum3-12x.c
+  - file: sum3-13a.c
     commands: *s
-  - file: sum3-12x.s
+  - file: sum3-13a.s
     tests: *s-diff
-  - file: sum3-12a.c
+  - file: sum3-13b.c
     commands: *s
-  - file: sum3-12a.s
+  - file: sum3-13b.s
     tests: *s-diff
-  - file: sum3-12b.c
-    commands: *s
-  - file: sum3-12b.s
-    tests: *s-diff
-  - file: sum3-12c.c
-    commands: *s
-  - file: sum3-12c.s
-    tests: *s-diff
-  - file: addints.c
-  - file: addints.s

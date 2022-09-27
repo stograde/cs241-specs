@@ -1,13 +1,11 @@
 # F21
 ---
-assignment: lab9
+assignment: lab10
 
-compilers:
-  - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'
+compilers: 
 
 files:
   - file: sum2.c
   - file: sum2.s
-  - file: pthreads2.c
-    commands: *c-thread-math
-    tests: $@.exec
+  - file: sqrts2.c
+  - file: sqrts2.s

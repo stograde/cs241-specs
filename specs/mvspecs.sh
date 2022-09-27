@@ -21,7 +21,7 @@ esac
 
 BASE=$1   FIRST=$2   LAST=$3   INCR=`echo $4 | sed s/^-/_/`
 
-CMD="mv"
+CMD="git mv"
 $TEST && { CMD="echo $CMD" ; echo Planned actions: ; }
 for k in `seq $FIRST $LAST`
 do  DEST=`echo $k $INCR+p | dc`
