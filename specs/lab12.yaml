@@ -22,11 +22,11 @@ files:
   - file: sum3.c
   - file: sum3.s
   - file: sum3.s_n
-  - file: sum3-13a.c
+  - file: sum3-12a.c
     commands: *s
-  - file: sum3-13a.s
+  - file: sum3-12a.s
     tests: *s-diff
-  - file: sum3-13b.c
+  - file: sum3-12b.c
     commands: *s
-  - file: sum3-13b.s
+  - file: sum3-12b.s
     tests: *s-diff
