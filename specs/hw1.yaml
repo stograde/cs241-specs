@@ -5,6 +5,7 @@ assignment: hw1
 compilers:
   - &c 'gcc $@ -o $@.exec'
   - &c-math 'gcc $@ -o $@.exec -lm'
+  - &c-thread-math 'gcc $@ -lpthread -lm -o $@.exec'
 
 files:
   - file: id_rsa.pub
