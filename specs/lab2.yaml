@@ -1,4 +1,4 @@
-# F22
+# S23
 ---
 assignment: lab2
 
@@ -8,7 +8,9 @@ compilers:
 files:
   - file: example2.c
     commands: *c-math
-    tests: $@.exec
+    tests: 
+      - echo -e "5\n 7\n 3.28" | $@.exec
+      - echo -e "4\n 6\n 7.5" | $@.exec
   - file: sqrts.c
     commands: *c-math
     tests: $@.exec
@@ -17,4 +19,6 @@ files:
     tests: $@.exec
   - file: fact2.c
     commands: *c-math
-    tests: echo 5 | $@.exec
+    tests: 
+      - echo 5 | $@.exec
+      - echo 12 | $@.exec

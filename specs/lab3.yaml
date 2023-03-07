@@ -1,4 +1,4 @@
-# F22
+# S23
 ---
 assignment: lab3
 
@@ -25,7 +25,9 @@ files:
     tests: $@.exec
   - file: read_string.c
     commands: *c
-    tests: $@.exec
+    tests: 
+      - echo -e "Hello, world!" | $@.exec
+      - echo -e "This is is a longer line.  It's over fifty characters long!" | $@.exec
   - file: strncopy.c
     commands: *c
     tests: $@.exec

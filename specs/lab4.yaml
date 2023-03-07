@@ -30,7 +30,9 @@ files:
     tests: $@.exec
   - file: getbit.c
     commands: *c
-    tests: $@.exec
+    tests: 
+      - echo -e "C2" | $@.exec
+      - echo -e "4AC2" | $@.exec
   - file: strncopy2.c
     commands: *c
     tests: $@.exec
