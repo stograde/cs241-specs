@@ -1,4 +1,4 @@
-# F22
+# S23
 ---
 assignment: lab5
 
@@ -11,10 +11,14 @@ files:
     tests: $@.exec
   - file: tryhex2.c
     commands: *c
-    tests: $@.exec
+    tests: 
+      - echo 4 | $@.exec
+      - echo 1010 | $@.exec
   - file: tryhex3.c
     commands: *c
-    tests: $@.exec
+    tests: 
+      - echo 42A7 | $@.exec
+      - echo 839C | $@.exec
   - file: strlenp.c
     commands: *c
     tests: $@.exec
