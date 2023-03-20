@@ -4,7 +4,7 @@ assignment: lab12
 
 compilers: 
   - &s 'gcc -c -S $@ -o $@-gcc.s'
-  - &s-diff 'diff $@ $@_link'
+  - &s-diff 'diff -b $@ $@_link'
 
 files:
   - file: addints.c

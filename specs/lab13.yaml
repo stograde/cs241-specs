@@ -1,9 +1,9 @@
-# F22
+# S23
 ---
 assignment: lab13
 
 compilers: 
-  - &s-diff 'diff $@ $@_link'
+  - &s-diff 'diff -b $@ $@_link'
 
 files:
   - file: scanf-i.c
