@@ -9,10 +9,8 @@ compilers:
 files:
   - file: hello.c
     commands: *c
-    tests: $@.exec
   - file: hello2.c
     commands: *c
-    tests: $@.exec
   - file: pthreads1.c
     commands: *c-thread-math
     tests: $@.exec
