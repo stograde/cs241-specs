@@ -1,4 +1,4 @@
-# F22
+# S23
 ---
 assignment: lab16
 
@@ -12,8 +12,12 @@ files:
   - file: addtwo.s
   - file: add10.s
     commands: *s
-    tests: $@.exec
+    tests: 
+      - echo 5 | $@.exec
+      - echo -1 | $@.exec
   - file: add1.s
   - file: mysquare.s
     commands: *s
-    tests: $@.exec
+    tests: 
+      - echo 5 | $@.exec
+      - echo 1 | $@.exec
