@@ -1,4 +1,4 @@
-# F22
+# S23
 ---
 assignment: lab18
 
@@ -31,8 +31,8 @@ files:
   - file: find.s
     commands: *hd-lib
     tests:
-      - echo e \n testing | $@.exec
-      - echo a \n a long line of a after a after a | $@.exec
+      - echo -e "e \n testing\n" | $@.exec
+      - echo -e "a \n a long line of a after a after a\n" | $@.exec
 
 supporting:
   - hdlib.o
