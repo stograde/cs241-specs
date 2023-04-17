@@ -32,3 +32,6 @@ files:
     commands: *hd-lib
   - file: myecho3.s
     commands: *hd-lib
+
+supporting:
+  - hdlib.o
