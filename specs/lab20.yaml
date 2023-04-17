@@ -1,0 +1,16 @@
+# S23
+---
+assignment: lab20
+
+architecture: armv7l
+
+compilers:
+  - &s 'gcc $@ -o $@.exec'
+
+files:
+  - file: isdigit.s
+    commands: *s
+    tests:
+      - echo 3 | $@.exec
+      - echo 45 | $@.exec
+      - echo e | $@.exec
